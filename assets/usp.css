@@ -1,0 +1,19 @@
+.usp-container {
+    display: flex;
+    justify-content: space-around;
+    vertical-align: middle;
+    margin: 3rem auto;
+
+    > div {
+        display: flex;
+        vertical-align: middle;
+    }
+
+    img {
+        width: 3rem;
+    }
+
+    span {
+        padding-left: 1rem;
+    }
+}

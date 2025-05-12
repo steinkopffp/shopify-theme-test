@@ -25,6 +25,18 @@
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
 
+  {%- if shop.metaobjects.usp.values -%}
+    {{ 'usp.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
+  {%- if shop.metaobjects.content_rows.values -%}
+    {{ 'content-row.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
+  {%- if shop.metaobjects.faqs.values -%}
+    {{ 'faqs.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
   {%- style -%}
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -44,6 +56,10 @@
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {%- if shop.metaobjects.faqs.values -%}
+    <script src="{{ 'faqs.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 
   {% if section.settings.image_zoom == 'hover' %}
@@ -718,6 +734,34 @@
       {{ product | structured_data }}
     </script>
   </div>
+
+  {% if shop.metaobjects.usp.values %}
+    <div class="page-width usp-container">
+      {% for usp in shop.metaobjects.usp.values limit: 3 %}
+        {% render 'usp', content: usp %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if shop.metaobjects.content_rows.values %}
+    <div class="page-width mr-container">
+      {% for row in shop.metaobjects.content_rows.values %}
+        {% render 'media-content-row', content: row %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if shop.metaobjects.faqs.values %}
+    <div class="page-width">
+      <h2>Häufig gestellte Fragen:</h2>
+      <div class="faqs-container">
+        {% for faq in shop.metaobjects.faqs.values %}
+          {% render 'faq-entry', content: faq %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
 </product-info>
 
 {% schema %}

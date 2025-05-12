@@ -1,0 +1,11 @@
+<div class="faq-entry">
+  <a class="question">
+    {{ content.question }}
+    <span class="indicator">
+      {% if content.open %}+{% else %}-{% endif %}
+    </span>
+  </a>
+  <div class="answer{% if content.open %} open{% endif %}">
+    {{ content.answer | metafield_tag }}
+  </div>
+</div>

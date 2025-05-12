@@ -1,0 +1,9 @@
+<section class="cm-row pos-{{ content.media_position }}">
+  <div class="rich-text">
+    <strong>{{ content.title }}</strong>
+    {{ content.content | metafield_tag }}
+  </div>
+  <div class="content-media">
+    {{ content.media | media_tag: image_size: '400x' }}
+  </div>
+</section>

@@ -1,0 +1,26 @@
+.faq-entry {
+    .question {
+        font-size: 2rem;
+        position: relative;
+        cursor: pointer;
+        display: block;
+    }
+
+    .indicator {
+        font-weight: bold;
+        font-size: 3rem;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .answer {
+        overflow: hidden;
+        height: 0;
+
+        &.open {
+            height: auto;
+        }
+    }
+}
