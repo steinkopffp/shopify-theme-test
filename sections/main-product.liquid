@@ -29,6 +29,10 @@
     {{ 'usp.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
 
+  {%- if shop.metaobjects.downloads.values -%}
+    {{ 'downloads.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
   {%- if shop.metaobjects.content_rows.values -%}
     {{ 'content-row.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
@@ -757,6 +761,18 @@
       <div class="faqs-container">
         {% for faq in shop.metaobjects.faqs.values %}
           {% render 'faq-entry', content: faq %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if shop.metaobjects.download.values %}
+    <h1>fooar</h1>
+    <div class="page-width">
+      <h2>Downloads zum Produkt:</h2>
+      <div class="downloads-container">
+        {% for download in shop.metaobjects.download.values %}
+          {% render 'download-entry', content: download %}
         {% endfor %}
       </div>
     </div>
